@@ -36,17 +36,18 @@ async function job() {
 (async function main() {
   const cronJob = createHourlyCronJob(job);
 
-  try {
-    cronJob.start();
-    console.log("STARTED JOB.");
-  } catch (error) {
-    cronJob.destroy();
-    console.log(`DESTROYED JOB: ${error}`);
-    throw error;
-  }
+  // try {
+  //   cronJob.start();
+  //   console.log("STARTED JOB.");
+  // } catch (error) {
+  //   cronJob.destroy();
+  //   console.log(`DESTROYED JOB: ${error}`);
+  //   throw error;
+  // }
 
   // Keep alive
   setInterval(() => {
     console.log("HEALTH CHECK")
-  }, 1000);
+    job()
+  }, 60000);
 })();
