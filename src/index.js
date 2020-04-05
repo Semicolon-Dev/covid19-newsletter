@@ -10,6 +10,8 @@ async function job() {
     const country = "Portugal";
     const service = new Covid19Service();
     const todayData = await service.getDataByCountryAndDate(country);
+    const dispatcher = new Dispatcher();
+    const cache = new Cache();
 
     if (!todayData) {
       console.log(`SKIP: No new data found.`)
@@ -18,14 +20,11 @@ async function job() {
 
     console.log(`GOT DATA: ${JSON.stringify(todayData)}`);
 
-    const cache = new Cache();
-
     if (cache.isHit(todayData)) {
       console.log(`SKIP: Notification already sent.`)
       return;
     }
 
-    const dispatcher = new Dispatcher();
 
     console.log(`SENT DATA: ${JSON.stringify(todayData)}`);
     return dispatcher.sendToSlack(todayData);
@@ -39,8 +38,10 @@ async function job() {
 
   try {
     cronJob.start();
+    console.log("STARTED JOB.");
   } catch (error) {
     cronJob.destroy();
+    console.log(`DESTROYED JOB: ${error}`);
     throw error;
   }
 })();
