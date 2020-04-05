@@ -44,4 +44,9 @@ async function job() {
     console.log(`DESTROYED JOB: ${error}`);
     throw error;
   }
+
+  // Keep alive
+  setInterval(() => {
+    console.log("HEALTH CHECK")
+  }, 1000);
 })();
