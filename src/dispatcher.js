@@ -7,10 +7,6 @@ module.exports.Dispatcher = class Dispatcher {
       baseURL: 'https://hooks.slack.com/services',
       timeout: 30000,
     })
-    const body = {
-      text: "Connected",
-    }
-    this._sendToSlack(body);
   }
 
   async sendData(data) {
