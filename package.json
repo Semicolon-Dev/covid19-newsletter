@@ -1,0 +1,29 @@
+{
+  "name": "covid19-newsletter",
+  "version": "1.0.0",
+  "description": "A newsletter to get covid19 current state.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Semicolon-Dev/covid19-newsletter.git"
+  },
+  "keywords": [
+    "newsletter",
+    "covid19"
+  ],
+  "author": "Semicolon Dev",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Semicolon-Dev/covid19-newsletter/issues"
+  },
+  "homepage": "https://github.com/Semicolon-Dev/covid19-newsletter#readme",
+  "dependencies": {
+    "axios": "^0.19.2",
+    "dotenv": "^8.2.0",
+    "node-cron": "^2.0.3"
+  }
+}
